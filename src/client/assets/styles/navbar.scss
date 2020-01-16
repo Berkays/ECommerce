@@ -1,0 +1,119 @@
+@import './variables';
+
+nav {
+	min-height: 80px;
+	.dropdown-toggle {
+		span,
+		small {
+			max-width: 95px;
+		}
+	}
+}
+
+.navbar-search-input {
+	border-top-left-radius: 0.25em !important;
+	border-bottom-left-radius: 0.25em !important;
+	border-top-right-radius: 0em !important;
+	border-bottom-right-radius: 0em !important;
+	border-color: rgb(210, 210, 210);
+	&:focus {
+		border-color: black;
+		border-right-color: rgb(190, 190, 190);
+		box-shadow: none;
+	}
+}
+
+.navbar-search-btn {
+	z-index: auto !important;
+	&:focus {
+		box-shadow: none !important;
+	}
+}
+
+.nav-item {
+	margin-left: 0.3em !important;
+	margin-right: 0.3em !important;
+}
+
+.navbar-nav .dropdown {
+	display: block;
+}
+
+.navbar-nav .dropdown-menu {
+	display: block;
+	min-width: 100vw;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	left: 50%;
+	margin-top: 1em;
+	max-height: 0px;
+	-webkit-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	overflow: hidden;
+	visibility: hidden;
+	-webkit-transition: max-height 200ms ease-out, visibility 0.15s linear;
+	transition: max-height 200ms ease-out, visibility 0.15s linear;
+	&.show {
+		visibility: visible;
+		-webkit-transition: max-height 200ms ease-in, visibility 0s 0s linear;
+		transition: max-height 200ms ease-in, visibility 0s 0s linear;
+		max-height: 400px;
+	}
+}
+
+.navbar-nav .dropdown-item {
+	transition: color 0.4s;
+	&:hover {
+		transition: color 0.4s;
+		background-color: initial;
+		text-decoration: underline;
+		text-decoration-color: rgb(39, 177, 39);
+		color: rgb(39, 177, 39);
+	}
+}
+
+.btn-outline-success {
+	.badge {
+		transition: none;
+	}
+}
+
+.dropdown-toggle::after {
+	display: none;
+}
+
+// .btn-success {
+// 	.badge-success {
+// 		background-color: inherit;
+// 	}
+// 	&:hover .badge-success {
+// 		background-color: #218838;
+// 		border-color: #1e7e34;
+// 	}
+// }
+
+@media (min-width: 768px) {
+	.navbar-nav .dropdown-menu {
+		display: block;
+		min-width: 220px;
+		margin-top: 1em;
+		right: auto;
+		left: 50%;
+		-webkit-transform: translate(-50%, 0);
+		-o-transform: translate(-50%, 0);
+		transform: translate(-50%, 0);
+		max-height: 0px;
+		overflow: hidden;
+		visibility: hidden;
+		-webkit-transition: max-height 200ms ease-out, visibility 0.15s linear;
+		transition: max-height 200ms ease-out, visibility 0.15s linear;
+		&.show {
+			visibility: visible;
+			-webkit-transition: max-height 200ms ease-in, visibility 0s 0s linear;
+			transition: max-height 200ms ease-in, visibility 0s 0s linear;
+			max-height: 400px;
+		}
+	}
+}

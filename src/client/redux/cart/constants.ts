@@ -1,0 +1,6 @@
+export const CART_GET = 'CART_GET';
+export const CART_ADD_ITEM = 'CART_ADD_ITEM';
+export const CART_REMOVE_ITEM = 'CART_REMOVE_ITEM';
+
+export const CART_ACTION_SUCCESS = 'CART_ACTION_SUCCESS';
+export const CART_ACTION_FAILURE = 'CART_ACTION_FAILURE';

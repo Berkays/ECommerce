@@ -1,0 +1,9 @@
+{
+	"verbose": true,
+	"ignore": [".git", "node_modules", "client/**/*"],
+	"ext": "js, jsx",
+	"watch": ["dist"],
+	"env": { "NODE_ENV": "development" },
+	"exec": "node .",
+	"delay": "2000"
+}

@@ -1,0 +1,9 @@
+language: node_js
+services:
+    - docker
+node_js:
+    - 12.6.0
+cache:
+    yarn: true
+    directories:
+        - node_modules

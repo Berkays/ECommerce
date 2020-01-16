@@ -1,0 +1,69 @@
+@import './variables';
+@import './colors';
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+// #pageWrapper {
+// 	&__open {
+// 	}
+// }
+
+/* The side navigation menu */
+.sidenav {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	max-width: $sidenav-width;
+	min-width: $sidenav-width - 50;
+	margin-right: -$sidenav-width;
+	padding-bottom: 1em;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	overflow-x: hidden;
+	background-color: $sidenav-bg-color;
+	transition: $sidenav-transition-duration;
+
+	&-open {
+		transition: $sidenav-transition-duration;
+		margin-right: 0;
+	}
+}
+@media (max-width: 575.98px) {
+	.sidenav {
+		max-width: 100%;
+	}
+	.sidenav-open {
+		width: 100%;
+	}
+}
+
+.sidenav-title {
+	padding: $sidenav-vertical-padding $sidenav-horizontal-padding 1em $sidenav-horizontal-padding;
+}
+
+.checkout-btn {
+	width: 100%;
+	border-radius: 2em;
+	border: none;
+	background-color: $theme-color;
+
+	&:hover {
+		background-color: $theme-hover-color;
+	}
+
+	&:focus &:active {
+		background-color: $theme-focus-color;
+	}
+}

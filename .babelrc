@@ -1,0 +1,56 @@
+{
+	"env": {
+		"browser": {
+			"plugins": [
+				[
+					"babel-plugin-transform-remove-imports",
+					{
+						"test": "typeorm"
+					}
+				],
+				["transform-rename-import", { "original": "^(type-graphql)$", "replacement": "$1/dist/browser-shim" }]
+			]
+		}
+	},
+	"presets": [
+		"@babel/preset-typescript",
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"node": true
+				}
+			}
+		],
+		"@babel/preset-react"
+	],
+	"plugins": [
+		"babel-plugin-transform-typescript-metadata",
+		["@babel/plugin-proposal-decorators", { "legacy": true }],
+		["@babel/plugin-proposal-class-properties", { "loose": true }],
+		"babel-plugin-parameter-decorator",
+		[
+			"file-loader",
+			{
+				"name": "[hash].[ext]",
+				"extensions": ["png", "jpg", "jpeg", "gif", "svg"],
+				"publicPath": "assets/images",
+				"outputPath": "dist/public/assets/images",
+				"context": "",
+				"limit": 0
+			}
+		],
+		[
+			"module-resolver",
+			{
+				"alias": {
+					"@src": "./src",
+					"@models": "./src/models",
+					"@client": "./src/client"
+				}
+			}
+		]
+	],
+	"comments": false,
+	"compact": false
+}
