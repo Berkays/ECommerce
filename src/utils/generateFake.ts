@@ -7,7 +7,6 @@ import { initDB, closeDB } from '../database/db';
 const USER_COUNT = process.env.FAKER_USER_COUNT || 2;
 const PRODUCT_COUNT = process.env.FAKER_PRODUCT_COUNT || 5;
 const PRODUCT_CATEGORY_COUNT = process.env.FAKER_CATEGORY_COUNT || 2;
-const PRODUCT_REVIEW_COUNT = process.env.FAKER_PRODUCT_REVIEW_COUNT || 5;
 const ORDER_COUNT = process.env.FAKER_ORDER_COUNT || 5;
 const googleId = process.env.FAKER_GOOGLE_ID || '';
 
@@ -94,7 +93,8 @@ async function genProducts() {
 		product.unitsInStock = faker.random.number();
 		await product.save();
 
-		for (let index = 0; index < PRODUCT_REVIEW_COUNT; index++) {
+		const reviewCount = faker.random.number({ min: 0, max: 5 });
+		for (let index = 0; index < reviewCount; index++) {
 			const productReview = new ProductReviews();
 			productReview.anonymousReview = faker.random.boolean();
 			productReview.rating = faker.random.number({ min: 1, max: 5 });
