@@ -68,20 +68,6 @@ nav {
 	}
 }
 
-.dropdown-toggle::after {
-	display: none;
-}
-
-// .btn-success {
-// 	.badge-success {
-// 		background-color: inherit;
-// 	}
-// 	&:hover .badge-success {
-// 		background-color: #218838;
-// 		border-color: #1e7e34;
-// 	}
-// }
-
 @media (min-width: 768px) {
 	.navbar-nav .dropdown-menu {
 		display: block;
