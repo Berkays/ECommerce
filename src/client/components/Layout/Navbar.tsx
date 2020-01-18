@@ -40,7 +40,7 @@ const NavbarComponent: React.FC<Props> = (props: Props) => {
 	const navbarAuthenticatedMenu = (
 		<li className='d-inline-flex align-items-center nav-item'>
 			<Dropdown className='text-center'>
-				<Dropdown.Toggle variant='outline-success' id='registeredAccountDropdown'>
+				<Dropdown.Toggle variant='outline-primary' id='registeredAccountDropdown'>
 					<FiUser size={24} />
 					<small className='d-none d-md-inline-block pl-0 pl-md-2 pr-2 text-truncate align-bottom'>
 						Welcome, <br />
@@ -56,7 +56,7 @@ const NavbarComponent: React.FC<Props> = (props: Props) => {
 					<Dropdown.Item href='#/action-3'>My Wish Lists</Dropdown.Item>
 					<Dropdown.Divider />
 					<Link to='/auth/logout'>
-						<Dropdown.Item as='div'>Logout</Dropdown.Item>
+						<Dropdown.Item>Logout</Dropdown.Item>
 					</Link>
 				</Dropdown.Menu>
 			</Dropdown>
@@ -66,19 +66,19 @@ const NavbarComponent: React.FC<Props> = (props: Props) => {
 	const navbarGuestMenu = (
 		<li className='d-inline-flex align-items-center nav-item'>
 			<Dropdown>
-				<Dropdown.Toggle variant='outline-success' id='dropdown-basic'>
+				<Dropdown.Toggle variant='outline-primary' id='guestAccountDropdown'>
 					<FiUser size={24} />
 					<small className='d-none d-md-inline pl-0 pl-md-2 pr-2'>Login / Signup</small>
 					<FaChevronDown />
 				</Dropdown.Toggle>
 				<Dropdown.Menu>
-					<NavLink to='/login'>
-						<Dropdown.Item as='div'>Sign In</Dropdown.Item>
-					</NavLink>
+					<Dropdown.Item as='div'>
+						<NavLink to='/login'>Sign In</NavLink>
+					</Dropdown.Item>
 					<Dropdown.Divider />
-					<NavLink to='/register'>
-						<Dropdown.Item as='div'>Sign Up</Dropdown.Item>
-					</NavLink>
+					<Dropdown.Item as='div'>
+						<NavLink to='/register'>Sign Up</NavLink>
+					</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>
 		</li>
@@ -121,7 +121,7 @@ const NavbarComponent: React.FC<Props> = (props: Props) => {
 					className='navbar-search-input'
 				/>
 				<InputGroup.Append>
-					<Button variant='success' className='navbar-search-btn'>
+					<Button variant='primary' className='navbar-search-btn'>
 						<IoIosSearch size={24} />
 					</Button>
 				</InputGroup.Append>

@@ -19,7 +19,6 @@ nav {
 	&:focus {
 		border-color: black;
 		border-right-color: rgb(190, 190, 190);
-		box-shadow: none;
 	}
 }
 
@@ -60,17 +59,6 @@ nav {
 		-webkit-transition: max-height 200ms ease-in, visibility 0s 0s linear;
 		transition: max-height 200ms ease-in, visibility 0s 0s linear;
 		max-height: 400px;
-	}
-}
-
-.navbar-nav .dropdown-item {
-	transition: color 0.4s;
-	&:hover {
-		transition: color 0.4s;
-		background-color: initial;
-		text-decoration: underline;
-		text-decoration-color: rgb(39, 177, 39);
-		color: rgb(39, 177, 39);
 	}
 }
 

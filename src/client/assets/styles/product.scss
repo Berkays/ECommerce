@@ -1,5 +1,4 @@
 @import './variables';
-@import './colors';
 
 @media (max-width: 767.98px) {
 	.product-list {
@@ -65,7 +64,6 @@
 		margin-right: auto;
 		white-space: nowrap;
 		border-radius: 2em;
-		background-color: $theme-color;
 		border: none;
 		span {
 			display: none;

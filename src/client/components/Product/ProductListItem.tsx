@@ -92,7 +92,7 @@ const ProductListItem = (props: Props) => {
 				<h4 className='font-weight-light'>${props.value.unitPrice}</h4>
 			</span>
 			<Button
-				variant='info'
+				variant='primary'
 				className='add-cart-btn'
 				disabled={props.value.unitsInStock <= 0}
 				onClick={handleAddToCart}>

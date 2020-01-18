@@ -1,5 +1,4 @@
 @import './variables';
-@import './colors';
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -57,13 +56,12 @@ input[type='number'] {
 	width: 100%;
 	border-radius: 2em;
 	border: none;
-	background-color: $theme-color;
 
-	&:hover {
-		background-color: $theme-hover-color;
-	}
+	// &:hover {
+	// 	background-color: $theme-hover-color;
+	// }
 
-	&:focus &:active {
-		background-color: $theme-focus-color;
-	}
+	// &:focus &:active {
+	// 	background-color: $theme-focus-color;
+	// }
 }

@@ -39,7 +39,7 @@ const NewsletterSign: React.FC = () => {
 		setLoading(false);
 	};
 	return (
-		<Container fluid={true} className='newsletter-container shadow-sm'>
+		<Container fluid={true} className='newsletter-container bg-primary text-white shadow-sm'>
 			<p className='text-uppercase font-weight-bold my-0 pr-3'>Get the latest news and offers</p>
 			<InputGroup className='newsletter-input-group'>
 				<span className='d-flex flex-row w-100'>
@@ -52,7 +52,7 @@ const NewsletterSign: React.FC = () => {
 						aria-describedby='button-addon'
 					/>
 					{isLoading ? (
-						<Spinner animation='border' role='status' className='newsletter-loader' />
+						<Spinner animation='border' role='status' className='newsletter-loader text-primary' />
 					) : (
 						<button className='btn btn-link newsletter-submit' onClick={handleNewsletterRegister}>
 							Join

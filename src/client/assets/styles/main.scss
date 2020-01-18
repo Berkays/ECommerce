@@ -5,6 +5,7 @@
 @use './product.scss';
 @use './newsletter.scss';
 
+@import './custom.scss';
 @import './variables';
 
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap);
@@ -111,6 +112,18 @@ top-0 {
 	transition: all 0.2s;
 	-moz-transition: all 0.2s;
 	-webkit-transition: all 0.2s;
+}
+
+a {
+	transition: color 0.4s;
+	-moz-transition: color 0.4s;
+	-webkit-transition: color 0.4s;
+
+	&:hover {
+		transition: color 0.4s;
+		-moz-transition: color 0.4s;
+		-webkit-transition: color 0.4s;
+	}
 }
 
 .align-self-flex-end {

@@ -1,0 +1,28 @@
+$theme-color: #28a745;
+
+$theme-colors: (
+	'primary': $theme-color
+);
+
+$link-color: #000;
+$link-hover-color: $theme-color;
+$link-hover-decoration: none;
+
+$dropdown-link-color: #000;
+$dropdown-link-hover-color: $theme-color;
+$dropdown-link-hover-bg: initial;
+
+$dropdown-link-active-color: none;
+$dropdown-link-active-bg: initial;
+
+$input-focus-border-color: #888;
+
+$dropdown-box-shadow: none;
+$input-box-shadow: none;
+$input-focus-box-shadow: none;
+$input-btn-focus-box-shadow: none;
+$btn-box-shadow: none;
+$btn-active-box-shadow: none;
+$btn-focus-box-shadow: none;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
