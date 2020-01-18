@@ -50,7 +50,7 @@ body,
 	padding-bottom: $footer-height;
 }
 
-top-0 {
+.top-0 {
 	top: 0;
 }
 
@@ -115,19 +115,24 @@ top-0 {
 }
 
 a {
-	transition: color 0.4s;
-	-moz-transition: color 0.4s;
-	-webkit-transition: color 0.4s;
+	transition: color 0.2s;
+	-moz-transition: color 0.2s;
+	-webkit-transition: color 0.2s;
 
 	&:hover {
-		transition: color 0.4s;
-		-moz-transition: color 0.4s;
-		-webkit-transition: color 0.4s;
+		transition: color 0.2s;
+		-moz-transition: color 0.2s;
+		-webkit-transition: color 0.2s;
 	}
 }
 
 .align-self-flex-end {
 	align-self: flex-end;
+}
+
+.list-group a:focus,
+button:focus {
+	outline: none;
 }
 
 @media (min-width: 768px) {
