@@ -49,15 +49,19 @@ const NavbarComponent: React.FC<Props> = (props: Props) => {
 					<FaChevronDown />
 				</Dropdown.Toggle>
 				<Dropdown.Menu>
-					<Dropdown.Item href='#/action-1'>Orders</Dropdown.Item>
-					<Dropdown.Item href='#/action-2'>My Account</Dropdown.Item>
-					<Dropdown.Item href='#/action-3'>Coupons</Dropdown.Item>
+					<Dropdown.Item as='div'>
+						<NavLink to='/account#orders'>Orders</NavLink>
+					</Dropdown.Item>
+					<Dropdown.Item as='div'>
+						<NavLink to='/account#settings'>My Account</NavLink>
+					</Dropdown.Item>
+					<Dropdown.Item href='/account'>Coupons</Dropdown.Item>
 					<Dropdown.Divider />
-					<Dropdown.Item href='#/action-3'>My Wish Lists</Dropdown.Item>
+					<Dropdown.Item href='#/action-3'>My Wish List</Dropdown.Item>
 					<Dropdown.Divider />
-					<Link to='/auth/logout'>
-						<Dropdown.Item>Logout</Dropdown.Item>
-					</Link>
+					<Dropdown.Item as='div'>
+						<Link to='/auth/logout'>Logout</Link>
+					</Dropdown.Item>
 				</Dropdown.Menu>
 			</Dropdown>
 		</li>
