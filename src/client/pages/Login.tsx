@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import Loader from 'react-loader';
 
 import { logoImg } from '../assets/images/index';
 
@@ -19,6 +18,7 @@ import {
 	accountLoginTwitter,
 	accountLoginGoogle
 } from '../redux/account/actions';
+import LoginForm from '../components/Login/LoginForm';
 
 const mapStateToProps = (state: RootState) => ({
 	isLoading: state.account.isLoading
@@ -131,94 +131,67 @@ const SignIn: React.FC<Props> = (props: Props) => {
 				</Form.Group>
 			</div>
 			<Form.Group>
-				<Button variant='primary' className='mx-auto mt-3 w-100 w-sm-50' type='submit'>
+				<Button variant='primary' className='btn-submit mt-3 w-md-50' type='submit'>
 					Sign in
 				</Button>
 			</Form.Group>
 		</Form>
 	);
 
+	const cornerComp = (
+		<React.Fragment>
+			<span className='invisible d-none d-sm-block ml-5 md:ml-0 mr-auto'>
+				<span className='d-none d-sm-inline'>
+					Not a member yet?
+					<hr />
+				</span>
+				<NavLink className='font-weight-bold transition text-center w-100 d-block mt-2' to='/register'>
+					Sign Up
+				</NavLink>
+			</span>
+			<NavLink className='' to='/'>
+				<Image src={logoImg} />
+				<title>My ECommerce</title>
+			</NavLink>
+			<span className='d-none d-sm-block mr-5 md:mr-0 ml-auto'>
+				<span className='d-none d-sm-inline'>
+					Not a member yet?
+					<hr />
+				</span>
+				<NavLink
+					className='text-green-500 font-weight-bold transition hover:text-blue-500 text-center w-100 d-block mt-2'
+					to='/register'>
+					Sign Up
+				</NavLink>
+			</span>
+		</React.Fragment>
+	);
+
+	const formComp = (
+		<React.Fragment>
+			{renderForm}
+			<span className='md:text-xs text-center d-block mt-5'>
+				Not a member yet?&nbsp;
+				<NavLink className='font-weight-bold transition' to='/register'>
+					Sign up
+				</NavLink>
+			</span>
+			<span className='md:text-xs text-center d-block mt-4'>
+				Forgot your password?&nbsp;
+				<NavLink className='font-weight-bold transition' to='/forgot'>
+					Reset password
+				</NavLink>
+			</span>
+		</React.Fragment>
+	);
+
 	return (
-		<main className='signup font-body'>
-			<section className='d-flex position-relative h-100'>
-				<div className='wrap3 mx-auto position-relative z-20'>
-					<header className='d-flex flex-row justify-content-center align-items-center py-6 md:pb-6'>
-						<span className='invisible d-none d-sm-block ml-5 md:ml-0 mr-auto'>
-							<span className='d-none d-sm-inline'>
-								Not a member yet?
-								<hr />
-							</span>
-							<NavLink
-								className='font-weight-bold transition text-center w-100 d-block mt-2'
-								to='/register'>
-								Sign Up
-							</NavLink>
-						</span>
-						<NavLink className='' to='/'>
-							<Image src={logoImg} />
-							<title>My ECommerce</title>
-						</NavLink>
-						<span className='d-none d-sm-block mr-5 md:mr-0 ml-auto'>
-							<span className='d-none d-sm-inline'>
-								Not a member yet?
-								<hr />
-							</span>
-							<NavLink
-								className='text-green-500 font-weight-bold transition hover:text-blue-500 text-center w-100 d-block mt-2'
-								to='/register'>
-								Sign Up
-							</NavLink>
-						</span>
-					</header>
-					<Loader loaded={!props.isLoading}>
-						<section className='bg-white md:shadow-2xl rounded w-100 p-4 py-5 md:p-12 text-center'>
-							<h1 className='font-weight-bold'>Sign in</h1>
-							<p>Welcome back</p>
-							<div className='line mt-4 mb-2'>
-								<span className='bg-white d-block mx-auto text-uppercase p-3 z-20'>
-									Connect your account
-								</span>
-							</div>
-							<div className='d-flex flex-column my-2 mb-2 md:w-1/2 mx-auto'>
-								<a
-									className='btn btn-primary shadow-sm font-weight-bold mb-3 px-12 pl-16 btn-facebook position-relative d-block'
-									href='/auth/facebook'>
-									Sign in with Facebook
-								</a>
-								<a
-									className='btn btn-primary shadow-sm font-weight-bold mb-3 px-12 pl-16 btn-twitter position-relative d-block'
-									href='/auth/twitter'>
-									Sign in with Twitter
-								</a>
-								<a
-									className='btn btn-primary shadow-sm font-weight-bold px-12 pl-16 btn-google block'
-									href='/auth/google'>
-									Sign in with Google
-								</a>
-							</div>
-							<div className='line mt-4 mb-2'>
-								<span className='bg-white d-block mx-auto text-uppercase p-3 z-20'>
-									Login using email
-								</span>
-							</div>
-							{renderForm}
-							<span className='md:text-xs text-center d-block mt-5'>
-								Not a member yet?&nbsp;
-								<NavLink className='font-weight-bold transition' to='/register'>
-									Sign up
-								</NavLink>
-							</span>
-							<span className='md:text-xs text-center d-block mt-4'>
-								Forgot your password?&nbsp;
-								<NavLink className='font-weight-bold transition' to='/forgot'>
-									Reset password
-								</NavLink>
-							</span>
-						</section>
-					</Loader>
-				</div>
-			</section>
-		</main>
+		<LoginForm
+			formHeader='Sign in'
+			formWelcomeText='Welcome back'
+			cornerComponent={cornerComp}
+			dividerText='login using email'
+			form={formComp}></LoginForm>
 	);
 };
 
