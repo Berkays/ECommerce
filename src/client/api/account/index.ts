@@ -2,6 +2,7 @@
 import { request } from 'graphql-request';
 
 import { RegisterLocalUserArgs, LoginLocalUserArgs } from '@src/graphql/resolvers/User/UserArgs';
+import User from '@models/User';
 
 export function loginUser(user: LoginLocalUserArgs) {
 	return fetch('http://localhost:3000/auth/local', {
@@ -43,4 +44,16 @@ export function registerUser(user: RegisterLocalUserArgs) {
 	query = query.replace('$data', JSON.stringify(user).replace(/\"([^(\")"]+)\":/g, '$1:'));
 
 	return request('http://localhost:3000/graphql', query);
+}
+
+export function getAccountSettings(): Promise<User> {
+	let query = `query {
+            getAccountSettings {
+            firstName
+            lastName
+            email
+        }
+    }`;
+
+	return request<User>('http://localhost:3000/graphql', query);
 }

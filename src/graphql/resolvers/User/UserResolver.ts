@@ -1,10 +1,10 @@
-import { Resolver, Arg, Authorized, Mutation, Ctx } from 'type-graphql';
+import { Resolver, Arg, Authorized, Mutation, Ctx, Query } from 'type-graphql';
 
 import { Request } from 'express';
+import { hashSync } from 'bcrypt';
 
 import User from '@models/User';
 import { RegisterLocalUserArgs } from './UserArgs';
-import { hashSync } from 'bcrypt';
 
 @Resolver(User)
 export default class UserResolver {
@@ -13,6 +13,16 @@ export default class UserResolver {
 	logout(@Ctx() ctx: Request): boolean {
 		ctx.logout();
 		return true;
+	}
+
+	@Query(() => User)
+	@Authorized()
+	async getAccountSettings(@Ctx() ctx: Request) {
+		try {
+			return ctx.user;
+		} catch {
+			return null;
+		}
 	}
 	// @Mutation(returns => User, { nullable: true })
 	// async loginLocal(@Ctx() ctx: any, @Arg('localUserCredentials', type => LoginLocalUserArgs) localUserCredentials: LoginLocalUserArgs) {
