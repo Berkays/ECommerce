@@ -23,7 +23,6 @@ input[type='number'] {
 	flex-direction: column;
 	height: 100%;
 	max-width: $sidenav-width;
-	min-width: $sidenav-width - 50;
 	margin-right: -$sidenav-width;
 	padding-bottom: 1em;
 	position: fixed;
@@ -56,12 +55,4 @@ input[type='number'] {
 	width: 100%;
 	border-radius: 2em;
 	border: none;
-
-	// &:hover {
-	// 	background-color: $theme-hover-color;
-	// }
-
-	// &:focus &:active {
-	// 	background-color: $theme-focus-color;
-	// }
 }

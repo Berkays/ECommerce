@@ -36,7 +36,7 @@ const CartItemQuantityComponent: React.FC<Props> = (props: Props) => {
 	};
 
 	return (
-		<InputGroup size={'sm'} className='border border-dark rounded w-50 mt-auto'>
+		<InputGroup size={'sm'} className='cart-item-quantity border border-dark rounded w-sm-50 mt-2 mt-sm-auto'>
 			<InputGroup.Prepend>
 				<Button
 					variant='outline-dark'

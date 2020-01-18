@@ -29,18 +29,18 @@ const CartOverlayItemList: React.FC<Props> = (props: Props) => {
 
 	const renderListItem = (item: CartItem, index: number) => (
 		<li key={index} className='px-4 py-3 list-unstyled shadow-sm mt-1'>
-			<div className='d-flex flex-row justify-content-between'>
+			<div className='d-flex flex-column flex-sm-row justify-content-between flex-wrap'>
 				<Image
 					width='128px'
 					height='128px'
 					alt={item.product['name']}
 					src={item.product.mainImage}
-					className='rounded-lg'
+					className='border border-gray rounded-lg align-self-center align-self-sm-start'
 				/>
-				<div className='d-flex flex-column flex-grow-1 pl-4'>
+				<div className='d-flex flex-column flex-grow-1 pl-0 pl-sm-4 text-center text-sm-left'>
 					<h5>{item.product['name']}</h5>
 					<CartItemQuantityInput value={item.product} />
-					<p className='align-self-flex-end mt-auto mb-0 lead'>
+					<p className='align-self-center align-self-sm-end mt-auto mb-0 lead'>
 						{`${item.product.unitPrice}$ x ${item.quantity} = ${item.price}$ Total`}
 					</p>
 				</div>
