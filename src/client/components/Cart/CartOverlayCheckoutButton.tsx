@@ -20,7 +20,7 @@ const CartOverlayCheckoutButton: React.FC<Props> = (props: Props) => {
 				<span>{props.cartItems.map(item => item.price).reduce((sum, n) => sum + n, 0)}$</span>
 			</span>
 			<NavLink to='/checkout' className=''>
-				<Button variant='info' className='checkout-btn' disabled={props.cartItemCount <= 0}>
+				<Button variant='primary' className='checkout-btn' disabled={props.cartItemCount <= 0}>
 					Checkout
 				</Button>
 			</NavLink>
