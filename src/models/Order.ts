@@ -16,18 +16,13 @@ import { ObjectType, Field } from 'type-graphql';
 import User from '@models/User';
 import OrderDetails from '@models/OrderDetails';
 import Payment from '@models/Payment';
+import { ORDER_STATUS } from './enums/OrderStatus';
 
-export enum ORDER_STATUS {
-	WAITING_PAYMENT = 'waiting_payment',
-	WAITING_SHIPMENT = 'waiting-shipment',
-	CANCELLED = 'cancelled',
-	FULFILLED = 'fulfilled',
-	RETURN_REQUEST = 'return_request',
-	RETURN_CONFIRMED = 'return_confirmed',
-	RETURN_REJECTED = 'return_rejected'
-}
-
-@Entity()
+@Entity({
+	orderBy: {
+		orderDate: 'DESC'
+	}
+})
 @ObjectType()
 export default class Order extends BaseEntity {
 	@PrimaryGeneratedColumn()
@@ -73,7 +68,8 @@ export default class Order extends BaseEntity {
 	@Field()
 	@OneToOne(
 		() => OrderDetails,
-		orderDetails => orderDetails.order
+		orderDetails => orderDetails.order,
+		{ eager: true }
 	)
 	@JoinColumn()
 	orderDetails: OrderDetails;
