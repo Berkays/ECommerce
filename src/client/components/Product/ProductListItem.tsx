@@ -78,18 +78,18 @@ const ProductListItem = (props: Props) => {
 	};
 
 	return (
-		<div className='product-list-item d-flex flex-column p-3 mb-4 mx-1'>
+		<div className='product-list-item d-flex flex-column p-3 mb-4 mx-1 align-items-center'>
 			<Image
 				src={props.value.mainImage}
 				alt={props.value.name}
 				title={props.value.name}
-				className='product-header-img img-fluid'
+				className='product-header-img w-100 h-100'
 			/>
 			<span className='px-2'>
 				<h5 className='pt-3'>{props.value.name}</h5>
 				{renderRating(props)}
 				{renderOldPrice}
-				<h4 className='font-weight-light'>${props.value.unitPrice}</h4>
+				<h4 className='font-weight-light text-center text-sm-left'>${props.value.unitPrice}</h4>
 			</span>
 			<Button
 				variant='primary'

@@ -29,7 +29,7 @@ const ProductList = (props: Props) => {
 
 	const renderItem = (product: Product) => {
 		return (
-			<Col key={product.publicId} xs={9} sm={6} lg={3} className='px-1'>
+			<Col key={product.publicId} xs={9} sm={6} md={4} lg={3}>
 				<ProductListItem value={product} />
 			</Col>
 		);
