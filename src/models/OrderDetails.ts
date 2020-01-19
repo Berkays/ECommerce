@@ -1,4 +1,4 @@
-import { Column, PrimaryGeneratedColumn, Entity, ManyToOne, Generated, Index, OneToOne, BaseEntity } from 'typeorm';
+import { Column, PrimaryGeneratedColumn, Entity, ManyToOne, OneToOne, BaseEntity } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 
 import Order from '@models/Order';
@@ -9,12 +9,6 @@ import Product from '@models/Product';
 export default class OrderDetails extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	readonly id: number;
-
-	@Field()
-	@Index()
-	@Column()
-	@Generated('uuid')
-	orderPublicId: string;
 
 	@OneToOne(
 		() => Order,
