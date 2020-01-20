@@ -16,3 +16,6 @@ env/*.env
 
 # Build output directory
 dist
+
+# Mock data generation temp directory
+dist_gen
