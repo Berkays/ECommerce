@@ -5,7 +5,7 @@ import * as faker from 'faker';
 import { initDB, closeDB } from '../database/db';
 
 const USER_COUNT = process.env.FAKER_USER_COUNT || 2;
-const PRODUCT_COUNT = process.env.FAKER_PRODUCT_COUNT || 5;
+const PRODUCT_COUNT = Number(process.env.FAKER_PRODUCT_COUNT) || 5;
 const PRODUCT_CATEGORY_COUNT = process.env.FAKER_CATEGORY_COUNT || 2;
 const ORDER_COUNT = process.env.FAKER_ORDER_COUNT || 5;
 const googleId = process.env.FAKER_GOOGLE_ID || '';
@@ -15,11 +15,12 @@ import Product from '../models/Product';
 import Category from '../models/ProductCategory';
 import Address from '../models/Address';
 import ProductReviews from '../models/ProductReviews';
-import Order, { ORDER_STATUS } from '../models/Order';
-import OrderDetails from '../models/OrderDetails';
+import Order from '../models/Order';
+import OrderItem from '../models/OrderItem';
 import Payment from '../models/Payment';
 import PaymentMethod from '../models/PaymentMethod';
 import { ADDRESS_TYPE } from '@models/enums/AddressType';
+import { ORDER_STATUS } from '@models/enums/OrderStatus';
 
 initDB().then(async () => {
 	await genUsers();
@@ -42,10 +43,7 @@ async function genUsers() {
 		user.password = faker.internet.password();
 
 		// First user has google id for authentication
-		if (index == 0) {
-			const _user = await User.find({ where: { googleId: googleId } });
-			if (_user === undefined) user.googleId = googleId;
-		}
+		if (index == 0) user.googleId = googleId;
 
 		await user.save();
 
@@ -126,22 +124,35 @@ async function genOrders() {
 	const users = await User.find();
 	const products = await Product.find();
 	const paymentMethods = await PaymentMethod.find();
+	for (let userIndex = 0; userIndex < users.length; userIndex++) {
+		const user = users[userIndex];
+		for (let index = 0; index < ORDER_COUNT; index++) {
+			const orderItems: OrderItem[] = [];
 
-	for (let index = 0; index < ORDER_COUNT; index++) {
-		const orderDetails = new OrderDetails();
-		orderDetails.quantity = faker.random.number(5);
-		orderDetails.product = products[faker.random.number({ min: 0, max: products.length - 1 })];
-		await orderDetails.save();
+			const productSet = new Set<number>();
+			for (let itemIndex = 0; itemIndex < PRODUCT_COUNT * 2; itemIndex++) {
+				const productIndex = faker.random.number({ min: 0, max: PRODUCT_COUNT - 1 });
+				if (productSet.has(productIndex)) continue;
+				productSet.add(productIndex);
 
-		const payment = new Payment();
-		payment.paymentMethod = paymentMethods[faker.random.number({ min: 0, max: paymentMethods.length - 1 })];
-		await payment.save();
+				const orderItem = new OrderItem();
+				orderItem.quantity = faker.random.number(5);
+				orderItem.product = products[productIndex];
+				await orderItem.save();
 
-		const order = new Order();
-		order.orderDetails = orderDetails;
-		order.payment = payment;
-		order.orderStatus = ORDER_STATUS.WAITING_PAYMENT;
-		order.user = users[faker.random.number({ min: 0, max: users.length - 1 })];
-		await order.save();
+				orderItems.push(orderItem);
+			}
+
+			const payment = new Payment();
+			payment.paymentMethod = paymentMethods[faker.random.number({ min: 0, max: paymentMethods.length - 1 })];
+			await payment.save();
+
+			const order = new Order();
+			order.orderItems = orderItems;
+			order.payment = payment;
+			order.orderStatus = ORDER_STATUS.WAITING_PAYMENT;
+			order.user = user;
+			await order.save();
+		}
 	}
 }

@@ -9,12 +9,13 @@ import {
 	UpdateDateColumn,
 	OneToOne,
 	JoinColumn,
-	BaseEntity
+	BaseEntity,
+	OneToMany
 } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 
 import User from '@models/User';
-import OrderDetails from '@models/OrderDetails';
+import OrderItem from '@models/OrderItem';
 import Payment from '@models/Payment';
 import { ORDER_STATUS } from './enums/OrderStatus';
 
@@ -65,12 +66,11 @@ export default class Order extends BaseEntity {
 	})
 	orderStatus: ORDER_STATUS;
 
-	@Field()
-	@OneToOne(
-		() => OrderDetails,
-		orderDetails => orderDetails.order,
+	@Field(() => [OrderItem])
+	@OneToMany(
+		() => OrderItem,
+		orderItems => orderItems.order,
 		{ eager: true }
 	)
-	@JoinColumn()
-	orderDetails: OrderDetails;
+	orderItems: OrderItem[];
 }
