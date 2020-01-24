@@ -1,21 +1,20 @@
 import { Column, PrimaryGeneratedColumn, Entity, OneToOne, JoinColumn, ManyToOne, BaseEntity } from 'typeorm';
 import { ObjectType } from 'type-graphql';
 
-import User from '@models/User';
 import Newsletter from '@models/Newsletter';
+import User from '@models/User';
 
 @Entity()
-@ObjectType()
 export default class NewsletterSubscription extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	readonly id: number;
 
 	@OneToOne(() => User, { nullable: true })
 	@JoinColumn()
-	userId?: string;
+	user?: User;
 
 	@ManyToOne(() => Newsletter)
-	newsletterId: string;
+	newsletter: Newsletter;
 
 	@Column({ unique: true, length: 50 })
 	email: string;

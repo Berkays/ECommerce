@@ -1,18 +1,39 @@
-import { Resolver, Arg, Mutation } from 'type-graphql';
+import { Resolver, Arg, Mutation, Ctx } from 'type-graphql';
+import { Request } from 'express';
 
 import NewsletterSubscription from '@models/NewsletterSubscription';
+import Newsletter from '@models/Newsletter';
+import User from '@models/User';
 
-@Resolver(NewsletterSubscription)
 export default class NewsletterResolver {
 	@Mutation(() => Boolean)
-	async registerNewsletter(@Arg('email') email: string): Promise<Boolean> {
+	async registerNewsletter(
+		@Ctx() req: Request,
+		@Arg('newsletter') newsletterName: string,
+		@Arg('email') email: string
+	): Promise<Boolean> {
 		try {
 			// Check for existing subscription
-			let result = await NewsletterSubscription.findOne({ email: email });
+			const newsletter = await Newsletter.findOne({ where: { name: newsletterName } });
+			if (newsletter == undefined) return false;
+
+			let result = undefined;
+			let user = undefined;
+			if (req.isAuthenticated()) {
+				user = req.user as User;
+				result = await NewsletterSubscription.findOne({
+					where: { newsletter: newsletter, user: user }
+				});
+			} else {
+				result = await NewsletterSubscription.findOne({
+					where: { newsletter: newsletter, email: email }
+				});
+			}
 			if (result === undefined) {
 				const sub = new NewsletterSubscription();
-				sub.email = email;
-				sub.newsletterId = '1'; //TODO: NEWSLETTER ID
+				if (req.isAuthenticated()) sub.user = user;
+				else sub.email = email;
+				sub.newsletter = newsletter;
 				await sub.save();
 				return true;
 			} else {
