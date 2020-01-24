@@ -24,6 +24,7 @@ import { ORDER_STATUS } from '@models/enums/OrderStatus';
 import ProductCategory from '../models/ProductCategory';
 import Page from '@models/Pages';
 import PageEntity from '@models/PageEntity';
+import Newsletter from '@models/Newsletter';
 
 initDB().then(async () => {
 	await genUsers();
@@ -31,6 +32,7 @@ initDB().then(async () => {
 	await genPaymentMethod();
 	await genOrders();
 	await genPages();
+	await genNewsletters();
 
 	await closeDB();
 
@@ -183,6 +185,12 @@ async function genPages() {
 	await pageEntity.save();
 	layoutPage.entities.push(pageEntity);
 
+	pageEntity = new PageEntity();
+	pageEntity.key = 'newsletter_general';
+	pageEntity.data = 'general';
+	await pageEntity.save();
+	layoutPage.entities.push(pageEntity);
+
 	for (let index = 0; index < categories.length; index++) {
 		const category = categories[index];
 		pageEntity = new PageEntity();
@@ -196,4 +204,14 @@ async function genPages() {
 	await productPage.save();
 
 	console.log('Created Entities');
+}
+
+async function genNewsletters() {
+	const newsletter = new Newsletter();
+	newsletter.name = 'general';
+	newsletter.description = faker.lorem.sentences(3);
+	newsletter.html = `<p>${faker.lorem.paragraph()}</p>`;
+	await newsletter.save();
+
+	console.log('Created newsletter');
 }
