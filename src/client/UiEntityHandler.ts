@@ -7,6 +7,10 @@ export function initUI(storeData: string) {
 export function getEntityData(key: string) {
 	if (ui == null) return;
 	const data = ui.get(key);
-	console.log(data);
-	return data;
+	try {
+		const obj = JSON.parse(data);
+		return obj;
+	} catch {
+		return data;
+	}
 }
