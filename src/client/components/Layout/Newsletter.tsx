@@ -5,9 +5,17 @@ import FormControl from 'react-bootstrap/FormControl';
 import Spinner from 'react-bootstrap/Spinner';
 import { string as yupString } from 'yup';
 
-import { registerToNewsletter } from '@client/api/misc';
+import { registerToNewsletter } from '@src/client/api/newsletter';
 
-const NewsletterSign: React.FC = () => {
+import { getEntityData } from '@src/client/UiEntityHandler';
+
+interface ComponentProps {
+	newsletter: string;
+}
+
+type Props = ComponentProps;
+
+const NewsletterSign: React.FC<Props> = (props: Props) => {
 	const [isLoading, setLoading] = useState(false);
 	const inputField = useRef<HTMLInputElement>(null);
 
@@ -28,7 +36,7 @@ const NewsletterSign: React.FC = () => {
 
 		if (!isValid) return;
 		setLoading(true);
-		registerToNewsletter(inputField.current.value)
+		registerToNewsletter(getEntityData(props.newsletter), inputField.current.value)
 			.then(() => {
 				inputField.current.placeholder = 'Successully subscribed';
 			})
