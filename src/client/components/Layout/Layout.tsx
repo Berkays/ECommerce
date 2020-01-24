@@ -3,6 +3,8 @@ import { Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 import Routes from '../../routes';
+
+import TopBanner from './TopBanner';
 import Navbar from './Navbar';
 import CartOverlay from '../Cart/CartOverlay';
 import Footer from './Footer';
@@ -30,6 +32,7 @@ const App: React.FC<Props> = (props: Props) => {
 			<Scrollbars autoHide universal>
 				<span onClick={props.isSidenavOpen ? props.toggleSideNav : null}>
 					<div id='pageWrapper' className='font-body'>
+						<TopBanner />
 						<Navbar />
 						<Switch>{renderRoutes(Routes)}</Switch>
 					</div>
