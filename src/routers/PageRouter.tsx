@@ -16,6 +16,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import App from '@client/components/Layout/Layout';
 import configureStore from '@client/redux/store';
 import User from '@models/User';
+import { getCache } from '@src/utils/loadUiEntities';
 
 let template = '';
 if (process.env.NODE_ENV !== 'development') {
@@ -49,7 +50,8 @@ router.get('*', async (req: Request, res: Response) => {
 		},
 		ui: {
 			TopBannerState: { show: false, src: '' },
-			SidenavState: { isOpen: false }
+			SidenavState: { isOpen: false },
+			UiEntities: getCache()
 		}
 	});
 	// const matchingRoutes = matchRoutes(Routes, req.url);

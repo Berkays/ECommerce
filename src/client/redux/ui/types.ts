@@ -10,4 +10,5 @@ export interface TopBannerState {
 export interface UIState {
 	readonly SidenavState?: SidenavState;
 	readonly TopBannerState?: TopBannerState;
+	readonly UiEntities: string;
 }

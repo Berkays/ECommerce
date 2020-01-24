@@ -9,7 +9,8 @@ const initialState: UIState = {
 	},
 	SidenavState: {
 		isOpen: false
-	}
+	},
+	UiEntities: ''
 };
 
 const reducer: Reducer<UIState> = (state = initialState, action) => {

@@ -9,7 +9,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 
 import App from './components/Layout/Layout';
 import configureStore from './redux/store';
-
+import { initUI } from './UiEntityHandler';
 declare global {
 	interface Window {
 		REDUX_DATA: any;
@@ -24,6 +24,7 @@ const preloadedState = window.REDUX_DATA;
 delete window.REDUX_DATA;
 
 const store = configureStore(preloadedState);
+initUI(store.getState().ui.UiEntities);
 
 const app = document.getElementById('root');
 ReactDOM.hydrate(

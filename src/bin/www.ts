@@ -10,6 +10,7 @@ import debug from 'debug';
 import * as http from 'http';
 import { initApp } from '@src/app';
 import { initDB, closeDB } from '@src/database/db';
+import { loadUiFromDB } from '@src/utils/loadUiEntities';
 
 debug('test:server');
 
@@ -31,13 +32,15 @@ let server: http.Server = null;
  */
 initDB()
 	.then(function() {
-		const app = initApp();
-		app.set('port', port);
+		loadUiFromDB().then(() => {
+			const app = initApp();
+			app.set('port', port);
 
-		server = http.createServer(app);
-		server.listen(port);
-		server.on('error', onError);
-		server.on('listening', onListening);
+			server = http.createServer(app);
+			server.listen(port);
+			server.on('error', onError);
+			server.on('listening', onListening);
+		});
 	})
 	.catch(function(err) {
 		console.error(err);

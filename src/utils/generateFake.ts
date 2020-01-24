@@ -21,12 +21,16 @@ import Payment from '../models/Payment';
 import PaymentMethod from '../models/PaymentMethod';
 import { ADDRESS_TYPE } from '@models/enums/AddressType';
 import { ORDER_STATUS } from '@models/enums/OrderStatus';
+import ProductCategory from '../models/ProductCategory';
+import Page from '@models/Pages';
+import PageEntity from '@models/PageEntity';
 
 initDB().then(async () => {
 	await genUsers();
 	await genProducts();
 	await genPaymentMethod();
 	await genOrders();
+	await genPages();
 
 	await closeDB();
 
@@ -73,6 +77,7 @@ async function genProducts() {
 	for (let index = 0; index < PRODUCT_CATEGORY_COUNT; index++) {
 		const category = new Category();
 		category.name = faker.commerce.department();
+		if (index == 0) category.name = 'Featured';
 		await category.save();
 
 		categories.push(category);
@@ -155,4 +160,40 @@ async function genOrders() {
 			await order.save();
 		}
 	}
+}
+
+async function genPages() {
+	const categories = await ProductCategory.find();
+
+	const layoutPage = new Page();
+	layoutPage.key = 'layout';
+	layoutPage.entities = [];
+
+	const productPage = new Page();
+	productPage.key = 'product';
+	productPage.entities = [];
+
+	let pageEntity = new PageEntity();
+	pageEntity.key = 'top_banner';
+	pageEntity.data = JSON.stringify({
+		background_color: '#000000',
+		content: 'some html',
+		visible: false
+	});
+	await pageEntity.save();
+	layoutPage.entities.push(pageEntity);
+
+	for (let index = 0; index < categories.length; index++) {
+		const category = categories[index];
+		pageEntity = new PageEntity();
+		pageEntity.key = category.name;
+		pageEntity.data = category.publicId;
+		await pageEntity.save();
+		productPage.entities.push(pageEntity);
+	}
+
+	await layoutPage.save();
+	await productPage.save();
+
+	console.log('Created Entities');
 }
