@@ -11,6 +11,7 @@ import { RootState } from '../../redux/store';
 import { cartAddItem } from '../../redux/cart/actions';
 
 import Product from '@models/Product';
+import ProductQuantity from './ProductListItemQuantity';
 
 const mapStateToProps = (state: RootState) => ({
 	cart: state.cart.items,
@@ -77,6 +78,22 @@ const ProductListItem = (props: Props) => {
 		);
 	};
 
+	const renderAddButton = (props: Props) => {
+		const item = props.cart.filter(item => item.product.publicId == props.value.publicId)[0];
+		if (item == undefined)
+			return (
+				<Button
+					variant='primary'
+					className='add-cart-btn mt-1'
+					disabled={props.value.unitsInStock <= 0}
+					onClick={handleAddToCart}>
+					<FaPlus />
+					<span>Add to Cart</span>
+				</Button>
+			);
+		else return <ProductQuantity value={item.product} />;
+	};
+
 	return (
 		<div className='product-list-item d-flex flex-column p-3 mb-4 mx-1 align-items-center'>
 			<Image
@@ -91,14 +108,7 @@ const ProductListItem = (props: Props) => {
 				{renderOldPrice}
 				<h4 className='font-weight-light text-center text-sm-left'>${props.value.unitPrice}</h4>
 			</span>
-			<Button
-				variant='primary'
-				className='add-cart-btn'
-				disabled={props.value.unitsInStock <= 0}
-				onClick={handleAddToCart}>
-				<FaPlus />
-				<span>Add to Cart</span>
-			</Button>
+			{renderAddButton(props)}
 		</div>
 	);
 };
