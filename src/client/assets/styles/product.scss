@@ -63,6 +63,9 @@
 		height: 48px;
 		border-radius: 2em;
 		border: none;
+		span {
+			display: none;
+		}
 	}
 
 	// Extra small devices (portrait phones, less than 576px)
