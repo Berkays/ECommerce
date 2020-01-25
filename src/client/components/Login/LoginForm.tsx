@@ -17,14 +17,14 @@ const LoginForm = (props: Props) => {
 	const asy = () => {};
 
 	return (
-		<main className='signup font-body'>
+		<main className='signup'>
 			<section className='d-flex position-relative h-100'>
 				<div className='wrap3 mx-auto position-relative z-20'>
-					<header className='d-flex flex-row justify-content-center align-items-center py-6 md:pb-6'>
+					<header className='d-flex flex-row justify-content-center align-items-center py-4'>
 						{props.cornerComponent}
 					</header>
 					<Loader loaded={!isLoading}>
-						<section className='bg-white md:shadow-2xl rounded w-100 p-4 py-5 md:p-12 text-center'>
+						<section className='bg-white shadow-sm rounded w-100 p-4 py-5 text-center'>
 							<h1 className='font-weight-bold'>{props.formHeader}</h1>
 							<p>{props.formWelcomeText}</p>
 							<div className='line mt-4 mb-2'>
