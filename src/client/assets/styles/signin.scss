@@ -40,10 +40,6 @@ input.error {
 	border-color: red;
 }
 
-.text-3xl {
-	font-size: 1.875rem;
-}
-
 .line {
 	position: relative;
 	display: -webkit-box;
@@ -53,19 +49,19 @@ input.error {
 	font-size: 0.875rem;
 	-webkit-box-pack: center;
 	justify-content: center;
-}
 
-.line:before {
-	content: '';
-	display: block;
-	width: 100%;
-	background-color: #cfd7dc;
-	position: absolute;
-	height: 1px;
-}
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		background-color: #cfd7dc;
+		position: absolute;
+		height: 1px;
+	}
 
-.line span {
-	top: 1px;
+	span {
+		top: 1px;
+	}
 }
 
 @mixin btn-social($bg-color, $bg-hover-color, $img) {
@@ -137,95 +133,4 @@ input.error {
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
-}
-
-// py-6
-.py-6 {
-	padding-top: 1.5rem;
-	padding-bottom: 1.5rem;
-}
-// mb-6
-.mb-6 {
-	margin-bottom: 1.5rem;
-}
-// m-10
-.m-10 {
-	margin: 2.5rem;
-}
-// my-6
-.my-6 {
-	margin-top: 1.5rem;
-	margin-bottom: 1.5rem;
-}
-// px-12
-.px-12 {
-	padding-left: 3rem;
-	padding-right: 3rem;
-}
-// pl-16
-.pl-16 {
-	padding-left: 4rem;
-}
-// px-20
-.px-20 {
-	padding-left: 5rem;
-	padding-right: 5rem;
-}
-
-// Extra small devices (portrait phones, less than 576px)
-@media (min-width: 576px) {
-	.w-sm-25 {
-		width: 25% !important;
-	}
-	.w-sm-50 {
-		width: 50% !important;
-	}
-	.w-sm-75 {
-		width: 75% !important;
-	}
-	.w-sm-100 {
-		width: 100% !important;
-	}
-}
-@media (min-width: 768px) {
-	.w-md-25 {
-		width: 25% !important;
-	}
-	.w-md-50 {
-		width: 50% !important;
-	}
-	.w-md-75 {
-		width: 75% !important;
-	}
-	.w-md-100 {
-		width: 100% !important;
-	}
-}
-@media (min-width: 992px) {
-	.w-lg-25 {
-		width: 25% !important;
-	}
-	.w-lg-50 {
-		width: 50% !important;
-	}
-	.w-lg-75 {
-		width: 75% !important;
-	}
-	.w-lg-100 {
-		width: 100% !important;
-	}
-}
-@media (min-width: 1200px) {
-	.w-xl-25 {
-		width: 25% !important;
-	}
-	.w-xl-50 {
-		width: 50% !important;
-	}
-	.w-xl-75 {
-		width: 75% !important;
-	}
-	.w-xl-100 {
-		width: 100% !important;
-	}
 }
