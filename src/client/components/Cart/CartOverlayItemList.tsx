@@ -41,7 +41,7 @@ const CartOverlayItemList: React.FC<Props> = (props: Props) => {
 					<h5>{item.product['name']}</h5>
 					<CartItemQuantityInput value={item.product} />
 					<p className='align-self-center align-self-sm-end mt-auto mb-0 lead'>
-						{`${item.product.price}$ x ${item.quantity} = ${item.price}$ Total`}
+						{`${item.quantity} x ${item.product.price}$`}
 					</p>
 				</div>
 			</div>
