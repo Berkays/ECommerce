@@ -84,7 +84,7 @@ const ProductListItem = (props: Props) => {
 			return (
 				<Button
 					variant='primary'
-					className='add-cart-btn mt-1'
+					className='add-cart-btn mt-auto'
 					disabled={props.value.unitsInStock <= 0}
 					onClick={handleAddToCart}>
 					<FaPlus />
@@ -95,12 +95,12 @@ const ProductListItem = (props: Props) => {
 	};
 
 	return (
-		<div className='product-list-item d-flex flex-column p-3 mb-4 mx-1 align-items-center'>
+		<div className='product-list-item p-3 mb-4'>
 			<Image
 				src={props.value.mainImage}
 				alt={props.value.name}
 				title={props.value.name}
-				className='product-header-img w-100 h-100'
+				className='product-header-img w-100 h-100 rounded-lg'
 			/>
 			<span className='px-2'>
 				<h5 className='pt-3'>{props.value.name}</h5>
