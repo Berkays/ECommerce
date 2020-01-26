@@ -8,7 +8,7 @@ export function getProducts(categoryId: string): Promise<Product[]> {
          publicId
          name
          description
-         unitPrice
+         price
          unitsInStock
          mainImage
          rating
