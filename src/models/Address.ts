@@ -10,10 +10,7 @@ export default class Address extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	readonly id: string;
 
-	@ManyToOne(
-		() => User,
-		user => user.addressList
-	)
+	@ManyToOne(() => User)
 	user: User;
 
 	@Field(() => ADDRESS_TYPE)

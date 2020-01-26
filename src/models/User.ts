@@ -1,7 +1,6 @@
-import { Column, PrimaryGeneratedColumn, Entity, CreateDateColumn, BaseEntity, OneToMany } from 'typeorm';
+import { Column, PrimaryGeneratedColumn, Entity, CreateDateColumn, BaseEntity } from 'typeorm';
 import { ObjectType, Field } from 'type-graphql';
 
-import Address from '@models/Address';
 import { ACCOUNT_TYPE } from '@models/enums/AccountType';
 
 @Entity()
@@ -43,11 +42,4 @@ export default class User extends BaseEntity {
 
 	@Column({ default: true })
 	active: boolean;
-
-	@Field(() => [Address])
-	@OneToMany(
-		() => Address,
-		address => address.user
-	)
-	addressList: Address[];
 }
