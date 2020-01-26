@@ -25,6 +25,7 @@ import ProductCategory from '../models/ProductCategory';
 import Page from '@models/Pages';
 import PageEntity from '@models/PageEntity';
 import Newsletter from '@models/Newsletter';
+import ProductPriceHistory from '@models/ProductPriceHistory';
 
 initDB().then(async () => {
 	await genUsers();
@@ -92,11 +93,17 @@ async function genProducts() {
 		product.mainImage = 'https://picsum.photos/256';
 		product.thumbnailImage = 'https://picsum.photos/128';
 		product.media = ['https://picsum.photos/512', 'https://picsum.photos/512', 'https://picsum.photos/512'];
-		product.price = Number(faker.commerce.price(1, 100));
 		product.description = faker.lorem.paragraph();
 		product.categories = categories;
 		product.unitsInStock = faker.random.number();
 		await product.save();
+
+		for (let priceHistoryCounter = 0; priceHistoryCounter < 5; priceHistoryCounter++) {
+			const priceHistory = new ProductPriceHistory();
+			priceHistory.unitPrice = Number(faker.commerce.price(1, 100));
+			priceHistory.product = product;
+			await priceHistory.save();
+		}
 
 		const reviewCount = faker.random.number({ min: 0, max: 5 });
 		for (let index = 0; index < reviewCount; index++) {
