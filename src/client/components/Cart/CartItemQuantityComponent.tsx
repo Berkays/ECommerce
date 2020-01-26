@@ -36,7 +36,7 @@ const CartItemQuantityComponent: React.FC<Props> = (props: Props) => {
 	};
 
 	return (
-		<InputGroup className='cart-item-quantity border border-dark rounded w-50 w-sm-100 mt-2 mt-sm-auto mx-auto mx-sm-1'>
+		<InputGroup className='cart-item-quantity border rounded w-50 w-sm-100 mt-2 mt-sm-auto mx-auto mx-sm-1'>
 			<InputGroup.Prepend>
 				<Button variant='primary' className='border-0' onClick={handleRemoveItem} disabled={props.isLoading}>
 					-

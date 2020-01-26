@@ -36,13 +36,13 @@ const ProductListItemQuantity: React.FC<Props> = (props: Props) => {
 	};
 
 	return (
-		<InputGroup className='cart-item-quantity border border-dark rounded mt-2'>
+		<InputGroup className='cart-item-quantity border rounded mt-2'>
 			<InputGroup.Prepend>
 				<Button variant='primary' className='border-0' onClick={handleRemoveItem} disabled={props.isLoading}>
 					-
 				</Button>
 			</InputGroup.Prepend>
-			<p className='my-0 align-self-center mx-3 border-0 flex-grow-1 text-center'>
+			<p className='my-0 align-self-center border-0 flex-grow-1 text-center'>
 				{props.cartItems.filter(item => item.product.publicId == props.value.publicId)[0].quantity}
 			</p>
 			<InputGroup.Append>
