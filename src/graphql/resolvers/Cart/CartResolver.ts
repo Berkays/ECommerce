@@ -55,14 +55,14 @@ export default class CartResolver {
 		if (result === undefined) {
 			const newItem = new CartItem();
 			newItem.cart = cart;
-			newItem.price = product.unitPrice;
+			newItem.price = product.price;
 			newItem.quantity = 1;
 			newItem.product = product;
 			await newItem.save();
 			cartItems.push(newItem);
 		} else {
 			result.quantity++;
-			result.price = Number(result.price) + Number(product.unitPrice);
+			result.price = Number(result.price) + Number(product.price);
 			await result.save();
 		}
 		return cartItems;
@@ -105,7 +105,7 @@ export default class CartResolver {
 					return [];
 				}
 			} else {
-				cartItem.price = Number(cartItem.price) - Number(product.unitPrice);
+				cartItem.price = Number(cartItem.price) - Number(product.price);
 				await cartItem.save();
 			}
 		}

@@ -92,7 +92,7 @@ async function genProducts() {
 		product.mainImage = 'https://picsum.photos/256';
 		product.thumbnailImage = 'https://picsum.photos/128';
 		product.media = ['https://picsum.photos/512', 'https://picsum.photos/512', 'https://picsum.photos/512'];
-		product.unitPrice = Number(faker.commerce.price(1, 100));
+		product.price = Number(faker.commerce.price(1, 100));
 		product.description = faker.lorem.paragraph();
 		product.categories = categories;
 		product.unitsInStock = faker.random.number();

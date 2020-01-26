@@ -106,7 +106,7 @@ const ProductListItem = (props: Props) => {
 				<h5 className='pt-3'>{props.value.name}</h5>
 				{renderRating(props)}
 				{renderOldPrice}
-				<h4 className='font-weight-light text-center text-sm-left'>${props.value.unitPrice}</h4>
+				<h4 className='font-weight-light text-center text-sm-left'>${props.value.price}</h4>
 			</span>
 			{renderAddButton(props)}
 		</div>

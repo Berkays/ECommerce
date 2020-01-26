@@ -13,7 +13,7 @@ export function getCart(isAuthenticated: boolean): Promise<CartItem[]> {
                     publicId
                     name
                     description
-                    unitPrice
+                    price
                     thumbnailImage
                 }
             }
@@ -38,7 +38,7 @@ export function addItem(isAuthenticated: boolean, product: Product): Promise<Car
                     publicId
                     name
                     description
-                    unitPrice
+                    price
                     thumbnailImage
                 }
             }
@@ -51,11 +51,11 @@ export function addItem(isAuthenticated: boolean, product: Product): Promise<Car
 		const index = cart.findIndex(v => v.product.publicId == product.publicId);
 		if (index >= 0) {
 			cart[index].quantity++;
-			cart[index].price += product.unitPrice;
+			cart[index].price += product.price;
 		} else {
 			const item = new CartItem();
 			item.product = product;
-			item.price = product.unitPrice;
+			item.price = product.price;
 			item.quantity = 1;
 			cart.push(item);
 		}
@@ -74,7 +74,7 @@ export function removeItem(isAuthenticated: boolean, product: Product): Promise<
             publicId
             name
             description
-            unitPrice
+            price
             thumbnailImage
           }
         }
@@ -86,7 +86,7 @@ export function removeItem(isAuthenticated: boolean, product: Product): Promise<
 		const index = cart.findIndex(v => v.product.publicId == product.publicId);
 		if (index >= 0) {
 			cart[index].quantity--;
-			cart[index].price -= product.unitPrice;
+			cart[index].price -= product.price;
 			if (cart[index].quantity <= 0) {
 				cart.splice(index, 1);
 			}

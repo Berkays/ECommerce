@@ -36,7 +36,7 @@ export default class Product extends BaseEntity {
 		precision: 10,
 		scale: 2
 	})
-	unitPrice: number;
+	price: number;
 
 	@Field()
 	@Column({ type: 'int' })
