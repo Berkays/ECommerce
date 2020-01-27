@@ -21,7 +21,7 @@ const CartOverlayHeader: React.FC<Props> = (props: Props) => {
 					<FaTimes size={24} color='000' />
 				</Button>
 			</div>
-			<hr />
+			<hr className='w-100' />
 		</React.Fragment>
 	);
 };

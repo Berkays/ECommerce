@@ -37,10 +37,10 @@ const CartOverlayItemList: React.FC<Props> = (props: Props) => {
 					src={item.product.mainImage}
 					className='border border-gray rounded-lg align-self-center align-self-sm-start'
 				/>
-				<div className='d-flex flex-column flex-grow-1 pl-0 pl-sm-4 text-center text-sm-left'>
+				<div className='d-flex flex-column flex-grow-1 pl-0 pl-sm-4 text-center text-sm-left justify-content-flex-end justify-content-sm-center'>
 					<h5>{item.product['name']}</h5>
 					<CartItemQuantityInput value={item.product} />
-					<p className='align-self-center align-self-sm-end mt-auto mb-0 lead'>
+					<p className='align-self-center align-self-sm-end mb-0 lead'>
 						{`${item.quantity} x ${item.product.price}$`}
 					</p>
 				</div>

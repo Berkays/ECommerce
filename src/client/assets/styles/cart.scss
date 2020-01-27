@@ -21,8 +21,7 @@ input[type='number'] {
 .sidenav {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	max-width: $sidenav-width;
+	height: 100vh;
 	margin-right: -$sidenav-width;
 	padding-bottom: 1em;
 	position: fixed;
@@ -36,6 +35,7 @@ input[type='number'] {
 	&-open {
 		transition: $sidenav-transition-duration;
 		margin-right: 0;
+		min-width: $sidenav-width;
 	}
 }
 @media (max-width: 575.98px) {
@@ -49,6 +49,12 @@ input[type='number'] {
 
 .sidenav-title {
 	padding: $sidenav-vertical-padding $sidenav-horizontal-padding 1em $sidenav-horizontal-padding;
+}
+
+.checkout-container {
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
 }
 
 .checkout-btn {

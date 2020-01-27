@@ -14,7 +14,7 @@ type Props = ReturnType<typeof mapStateToProps>;
 
 const CartOverlayCheckoutButton: React.FC<Props> = (props: Props) => {
 	return (
-		<div className='d-flex flex-column mx-4 mt-auto'>
+		<div className='checkout-container mx-4'>
 			<span className='d-inline-flex justify-content-between my-3 px-3 text-uppercase font-weight-bold'>
 				<span>Subtotal</span>
 				<span>{props.cartItems.map(item => item.price).reduce((sum, n) => sum + n, 0)}$</span>
