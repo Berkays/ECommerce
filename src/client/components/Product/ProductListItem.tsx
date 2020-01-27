@@ -53,27 +53,28 @@ const ProductListItem = (props: Props) => {
 		for (let index = 0; index <= props.value.rating - 1; index++)
 			fullStars.push(
 				<li className='list-unstyled d-inline' key={index}>
-					<IoIosStar size={18} color='#ccbe00' />
+					<IoIosStar size={16} color='#ccbe00' />
 				</li>
 			);
 
 		for (let index = props.value.rating + 0.9; index <= 5; index++)
 			emptyStars.push(
 				<li className='list-unstyled d-inline' key={index}>
-					<IoIosStarOutline size={18} color='#ccbe00' />
+					<IoIosStarOutline size={16} color='#ccbe00' />
 				</li>
 			);
 
 		if (fullStars.length + emptyStars.length < 5)
-			halfStar = <IoIosStarHalf size={18} color='#ccbe00' className='d-inline' />;
+			halfStar = <IoIosStarHalf size={16} color='#ccbe00' className='d-inline' />;
 		return (
 			<div className='text-center'>
 				{fullStars}
 				{halfStar}
 				{emptyStars}
-				<p className='font-weight-light mb-2'>
+				<br />
+				<span className='font-weight-light'>
 					({props.value.ratingCount > 0 ? `${props.value.ratingCount} reviews` : 'No reviews'})
-				</p>
+				</span>
 			</div>
 		);
 	};
@@ -95,18 +96,20 @@ const ProductListItem = (props: Props) => {
 	};
 
 	return (
-		<div className='product-list-item p-3 mb-4'>
+		<div className='product-list-item mb-5'>
 			<Image
 				src={props.value.mainImage}
 				alt={props.value.name}
 				title={props.value.name}
-				className='product-header-img w-100 h-100 rounded-lg'
+				className='product-header-img w-100 h-100'
 			/>
-			<span className='px-2'>
-				<h5 className='pt-3'>{props.value.name}</h5>
+			<span className='w-100 d-flex flex-column flex-grow-1 px-2 pt-3 pb-2'>
+				<span>{props.value.name}</span>
 				{renderRating(props)}
 				{renderOldPrice}
-				<h4 className='font-weight-light text-center text-sm-left'>${props.value.price}</h4>
+				<div className='font-weight-light text-center text-sm-left mt-auto d-inline-block'>
+					${props.value.price.toFixed(2)}
+				</div>
 			</span>
 			{renderAddButton(props)}
 		</div>

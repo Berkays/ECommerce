@@ -28,21 +28,24 @@
 	flex-direction: column;
 	align-items: center;
 
-	min-height: 30em;
-	max-width: 20em;
+	min-height: 25em;
+	max-width: 256px;
 	margin-left: auto;
 	margin-right: auto;
 
-	transition: box-shadow 0.2s, transform 0.2s;
+	transition: box-shadow 0.2s, transform 0.15s, border 0.2s;
 	transform: scale(1);
-	border-color: rgb(220, 220, 220);
-	border-style: solid;
-	border-width: 1px;
+
 	border-radius: 6px;
 
 	&:hover {
-		transition: box-shadow 0.2s, transform 0.2s;
+		transition: box-shadow 0.2s, transform 0.15s, border 0.2s;
 		transform: scale(1.1);
+
+		border-color: rgb(220, 220, 220);
+		border-style: solid;
+		border-width: 1px;
+		border-bottom: none;
 
 		-webkit-box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.6);
 		-moz-box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.6);
@@ -50,11 +53,11 @@
 
 		@media (min-width: 576px) {
 			.add-cart-btn {
-				transition: width 0.2s;
+				transition: width 0.1s;
 				width: 100%;
 				height: 48px;
 				white-space: nowrap;
-
+				border-radius: 0em;
 				span {
 					display: inline;
 					padding-left: 0.5em;
@@ -68,27 +71,26 @@
 		max-height: $product-header-img-height;
 		background-color: gray;
 	}
+
+	// Mobile devices
 	.add-cart-btn {
 		width: 100%;
 		height: 48px;
-		border-radius: 2em;
 		border: none;
+		border-radius: 0;
 		span {
 			display: none;
 		}
-	}
-
-	// Extra small devices (portrait phones, less than 576px)
-	@media (min-width: 576px) {
-		.add-cart-btn {
-			transition: width 0.2s;
+		// Normal sized devices
+		@media (min-width: 576px) {
+			transition: width 0.1s;
 			width: 48px;
 			height: 48px;
+			border: none;
+			border-radius: 2em;
 			margin-left: auto;
 			margin-right: auto;
 			white-space: nowrap;
-			border-radius: 2em;
-			border: none;
 			span {
 				display: none;
 			}

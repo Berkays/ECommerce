@@ -37,7 +37,7 @@ const ProductList = (props: Props) => {
 
 	return (
 		<React.Fragment>
-			<div className='product-list col-10 mx-auto'>
+			<div className='product-list col-8 mx-auto'>
 				<Container fluid>
 					<Row>
 						<Col xs={12}>
